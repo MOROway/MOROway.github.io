@@ -1,4 +1,3 @@
-# MOROway.github.io
-MOROway GitHub Page
+# MOROway GitHub Page
 
-The MOROway GitHub page is a redirect to the "MOROway App" GitHub page...
+The MOROway GitHub page is a redirect to the "MOROway App" GitHub page…
