@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<base href="../">
+<meta charset="UTF-8">
+<meta name="theme-color" content="#000" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Einstellungen - MOROway App</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/x-icon" sizes="32x32" href="favicon.ico">
+
+<!-- Open Source Libraries And Fonts -->
+<!-- Google: Material Design Lite -->
+<script src="src/others/open_source/open_code/google/mdl/material.min.js"></script>
+<link rel="stylesheet" type="text/css" href="src/others/open_source/open_code/google/mdl/material.min.css">
+<!-- Fonts -->
+<link rel="stylesheet" type="text/css" href="src/others/open_source/open_fonts/google/MaterialIcons/font.css">
+<link rel="stylesheet" type="text/css" href="src/others/open_source/open_fonts/google/Roboto/font.css">
+
+<!-- General Scripts -->
+<script src="src/jonathan_herrmann_engel/js/appdata.js"></script>
+<script src="src/jonathan_herrmann_engel/js/general.js"></script>
+<script src="platform.js"></script>
+<!-- Settings Script -->
+<script src="src/jonathan_herrmann_engel/js/settings.js"></script>
+
+
+<style>
+body{
+}
+.mdl-list__item {
+	display: block !important;
+	height: auto !important;
+	overflow: visible !important;
+}
+
+.mdl-list__item-primary-content {
+	height: auto !important;
+}
+
+.mdl-list__item-text-body {
+	height: auto !important;	
+}
+
+.textButton {
+	line-height: 40px !important;
+}
+
+</style>
+</head>
+<body>
+<div class="mdl-layout mdl-js-layout">
+<div style="left: 0%;" id="canvas-notifier" class="mdl-js-snackbar mdl-snackbar">
+  <div class="mdl-snackbar__text"></div>
+  <button class="mdl-snackbar__action" type="button"></button>
+</div>
+  <header style="background-color: black;" class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+          <span class="mdl-layout__title">Einstellungen</span>
+    </div>
+  </header>
+
+  <main class="mdl-layout__content">
+<ul class="mdl-list">
+  <li id="showNotifications" class="mdl-list__item mdl-list__item--three-line">
+    <span class="mdl-list__item-primary-content">
+      <i class="material-icons mdl-list__item-avatar leftButton" onclick="settingsChange(event, 'leftButton')">settings</i>
+      <span class="textButton" onclick="settingsChange(event, 'textButton')">Benachrichtigungen</span>
+      <span class="mdl-list__item-text-body">
+        <br>Zeigt Texteinblendungen bei verschiedenen Aktionen an.
+		<br><i>Funktioniert nicht auf kleinen Bildschirmen. Einige Benachrichtigungen werden trotz Deaktivierung dieser Option angezeigt.</i>
+      </span>
+    </span>
+  </li>
+   <li id="classicUI" class="mdl-list__item mdl-list__item--three-line"> 
+    <span class="mdl-list__item-primary-content">
+      <i class="material-icons mdl-list__item-avatar leftButton" onclick="settingsChange(event, 'leftButton')">settings</i>
+      <span class="textButton" onclick="settingsChange(event, 'textButton')">Klassische Steuerelemente</span>
+	  <span class="mdl-list__item-text-body">
+		<br>Zeigt die klassischen Steuerelemente wie Trafo und Zugauswahlbutton.
+	  </span>
+    </span>
+  </li>
+  <li id="alwaysShowSelectedTrain" class="mdl-list__item mdl-list__item--three-line">
+    <span class="mdl-list__item-primary-content">
+      <i class="material-icons mdl-list__item-avatar leftButton" onclick="settingsChange(event, 'leftButton')">settings</i>
+      <span class="textButton" onclick="settingsChange(event, 'textButton')">Ausgew&auml;hlter Zug</span>
+      <span class="mdl-list__item-text-body">
+		<br>Zeigt den Namen des ausgew&auml;hlten Zuges immer an.
+		<br><i>Erfodert aktivierte "Klassische Steuerelemente".</i>
+	  </span>
+    </span>
+  </li>
+  <li id="showSwitches" class="mdl-list__item mdl-list__item--three-line">
+    <span class="mdl-list__item-primary-content">
+      <i class="material-icons mdl-list__item-avatar leftButton" onclick="settingsChange(event, 'leftButton')">settings</i>
+      <span class="textButton" onclick="settingsChange(event, 'textButton')">Weichen aktivieren</span>
+      <span class="mdl-list__item-text-body">
+		<br>Ermöglicht das Stellen einiger Weichen.
+		<br><i>Funktioniert nicht auf kleineren Bildschirmen. Erfodert aktivierte "Klassische Steuerelemente".</i>
+	  </span>
+    </span>
+  </li>
+  <li id="cursorascircle" class="mdl-list__item mdl-list__item--three-line">
+    <span class="mdl-list__item-primary-content">
+      <i class="material-icons mdl-list__item-avatar leftButton" onclick="settingsChange(event, 'leftButton')">settings</i>
+      <span class="textButton" onclick="settingsChange(event, 'textButton')">Cursor als Farbe darstellen</span>
+      <span class="mdl-list__item-text-body">
+		<br>Zeigt statt dem Maussymbol einen Farbkreis.
+		<br><i>Funktioniert nicht auf Touchscreens.</i>
+	  </span>
+    </span>
+  </li>
+  <li id="burnTheTaxOffice" class="mdl-list__item mdl-list__item--three-line">
+    <span class="mdl-list__item-primary-content">
+      <i class="material-icons mdl-list__item-avatar leftButton" onclick="settingsChange(event, 'leftButton')">settings</i>
+      <span class="textButton" onclick="settingsChange(event, 'textButton')">Brennendes Finanzamt animieren</span>
+      <span class="mdl-list__item-text-body">
+		<br>Zeigt Animationen zum brennenden Finanzamt.
+	  </span>
+    </span>
+  </li>
+</ul>
+
+ <button id="helpOption" class="internal-link mdl-button mdl-js-button mdl-js-ripple-effect">
+HILFE &amp; INFORMATIONEN</button>
+    <button id="backOption" class="internal-link mdl-button mdl-js-button mdl-js-ripple-effect">
+ZUR&Uuml;CK</button>
+ 
+</main></div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+@font-face {
+	font-family: "Noto Sans";
+	font-style: normal;
+	font-weight: 400;
+	src: url("NotoSans/NotoSans-Regular.ttf") format("truetype");
+	font-display: swap;
+}
+body {
+	font-family: "Noto Sans";
+	margin: 0;
+	padding: 0;
+	background: black;
+	color: white;
+}
+#share {
+	position: fixed;
+	z-index: 100;
+	right: 15px;
+	top: 15px;
+	width: 30px;
+	height: 30px;
+}
+#share-dialog {
+	position: fixed;
+	z-index: 200;
+	right: 15px;
+	top: 15px;
+	left: 15px;
+	display: none;
+	background: rgba(10,10,10,0.9);
+	padding: 20px;
+	border: 2px solid white;
+	border-radius: 40px;
+	text-align: center;
+}
+#share-dialog-close {
+	position: fixed;
+	z-index: 300;
+	right: 35px;
+	top: 35px;
+	background: red;
+	font-weight: 900;
+	font-size: 1.5em;
+	padding: 4px;
+	border-radius: 4px;
+	color: white;
+	text-align: center;
+	font-family: monospace;
+}
+
+@media (orientation: portrait) {
+	#share {
+		top: unset;
+		bottom: 15px;
+	}
+}

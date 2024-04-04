@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+<base href="../">
+<meta charset="UTF-8">
+<meta name="theme-color" content="#000" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Versionsgeschichte - MOROway App</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/x-icon" sizes="32x32" href="favicon.ico">
+
+<!-- Open Source Libraries And Fonts -->
+<!-- Google: Material Design Lite -->
+<script src="src/others/open_source/open_code/google/mdl/material.min.js"></script>
+<link rel="stylesheet" type="text/css" href="src/others/open_source/open_code/google/mdl/material.min.css">
+<!-- Fonts -->
+<link rel="stylesheet" type="text/css" href="src/others/open_source/open_fonts/google/MaterialIcons/font.css">
+<link rel="stylesheet" type="text/css" href="src/others/open_source/open_fonts/google/Roboto/font.css">
+
+<!-- General Scripts -->
+<script src="src/jonathan_herrmann_engel/js/appdata.js"></script>
+<script src="src/jonathan_herrmann_engel/js/general.js"></script>
+<script src="platform.js"></script>
+<!-- Help Script -->
+<script src="src/jonathan_herrmann_engel/js/whatsnew.js"></script>
+
+<style>
+
+body {
+	text-align: center;
+	background: #111;
+}
+
+article {
+	padding: 2%;
+	margin: 0;
+	border-top: 1px rgba(85,85,85,0.5) solid;
+	border-bottom: 1px rgba(85,85,85,0.5) solid;
+}
+
+.mdl-layout__title {
+	color: floralWhite;
+}
+
+.mdl-card {
+	vertical-align: middle;
+	background: floralWhite;
+	display: inline-block;
+	margin: 1%;
+}
+
+.mdl-card__title-text {
+	color: black;
+	font-weight: 700;
+}
+.mdl-card__supporting-text {
+	color: #5f5f5f;
+}
+
+a {
+	color: #4f4f4f;
+}
+
+h2 {
+	color: floralWhite;
+}
+
+#backOption {
+	color: floralWhite;
+}
+
+</style>
+<!-- Workaround for https://github.com/google/material-design-lite/issues/4140 -->
+<script>  
+window.addEventListener("load",workaround);
+function workaround(){
+  var hash = window.location.hash.replace(/[^a-zA-Z0-9\-\_]/i, "");
+  if(hash){
+   var elem = document.querySelector("#"+hash)
+   if(elem){ 
+     elem.scrollIntoView();
+   }
+  }
+}
+</script>
+</head>
+<body>
+
+
+	<div class="mdl-layout mdl-js-layout">
+	
+	
+		<div style="left: 0%;" id="canvas-notifier" class="mdl-js-snackbar mdl-snackbar">
+			<div class="mdl-snackbar__text"></div>
+			<button class="mdl-snackbar__action" type="button"></button>
+		</div>
+		
+		
+		<header style="background-color: black" class="mdl-layout__header">
+			<div class="mdl-layout__header-row">
+				<span class="mdl-layout__title">Versionsgeschichte</span>
+			</div>
+		</header>
+
+		
+		<main class="mdl-layout__content">
+		
+			<article id="v1">
+				<h2>Version 1</h2>
+				<div class="mdl-card mdl-shadow--2dp version">
+					<div class="mdl-card__title">
+						<h2 class="mdl-card__title-text">Neu in Version 1.0</h2>
+					</div>
+					<div class="mdl-card__supporting-text">
+						<p>
+							<i>2011</i>
+						</p>
+						<p>
+							Die animierte Dampflok stellt den Beginn der MOROway App dar.
+						</p>
+					</div>
+				</div>
+			</article>
+			
+			<article id="v2">
+				<h2>Version 2</h2>
+				<div class="mdl-card mdl-shadow--2dp version">
+					<div class="mdl-card__title">
+						<h2 class="mdl-card__title-text">Neu in Version 2.0</h2>
+					</div>
+					<div class="mdl-card__supporting-text">
+						<p>
+							<i>2011</i>
+						</p>
+						<p>
+							Ein neuer Zug, der TGV, wurde hinzugefügt.
+							<br>Erstes animiertes Auto.
+						</p>
+					</div>
+				</div>
+			</article>
+			
+			<article id="v3">
+				<h2>Version 3</h2>
+				<div class="mdl-card mdl-shadow--2dp version">
+					<div class="mdl-card__title">
+						<h2 class="mdl-card__title-text">Neu in Version 3.0</h2>
+					</div>
+					<div class="mdl-card__supporting-text">
+						<p>
+							<i>2011</i>
+						</p>
+						<p>
+							Verbesserter TGV-Pfad in umgekehrter Richtung.
+							<br>Verbesserter Pfad für das erste Auto.
+							<br>Zweites Auto wurde hinzugefügt.
+							<br>Beide Autos sind nun steuerbar.
+						</p>
+					</div>
+				</div>
+				<div class="mdl-card mdl-shadow--2dp version">
+					<div class="mdl-card__title">
+						<h2 class="mdl-card__title-text">Neu in Version 3.1</h2>
+					</div>
+					<div class="mdl-card__supporting-text">
+						<p>
+							<i>2011</i>
+						</p>
+						<p>
+							Erste Version eines Infotextes.
+						</p>
+					</div>
+				</div>
+				<div class="mdl-card mdl-shadow--2dp version">
+					<div class="mdl-card__title">
+						<h2 class="mdl-card__title-text">Neu in Version 3.2</h2>
+					</div>
+					<div class="mdl-card__supporting-text">
+						<p>
+							<i>2011</i>
+						</p>
+						<p>
+							Ein Intro mit dem MOROway Logo wurde eingebaut.
+							<br>Beide Züge sind individuell steuerbar.
+							<br>Steuerung des Infotext wurde ergänzt.
+						</p>
+					</div>
+				</div>
+			</article>
+
+			<article id="v4">
+				<h2>Version 4</h2>
+				<div class="mdl-card mdl-shadow--2dp version">
+					<div class="mdl-card__title">
+						<h2 class="mdl-card__title-text">Neu in Version 4.0</h2>
+					</div>
+					<div class="mdl-card__supporting-text">
+						<p>
+							<i>2015</i>
+						</p>
+						<p>
+							<b>NEU</b>! Update von Action-Script 2 auf Action-Script 3.
+							<br><b>NEU</b>! Einfügen von Wagen für die Dampflok.
+							<br><b>NEU</b>! Zweiter Zug im Innenkreis (Schi-Stra-Bus).
+							<br><b>NEU</b>! Steuerung durch Klick auf Zug ist nun möglich.
+							<br>Überarbeiteter Hintergrund.
+							<br>Überarbeitete Kreisführung für die Autos.
+							<br>Veränderter Vorspann.
+							<br>Veränderte Bedienelemente und neuer Hilfetext.
+							<br>Fehlerkorrekturen.
+						</p>
+					</div>
+				</div>
+			</article>
+			
+			<article id="v5">
+				<h2>Version 5</h2>
+				<div class="mdl-card mdl-shadow--2dp version">
+					<div class="mdl-card__title">
+						<h2 class="mdl-card__title-text">Neu in Version 5.0</h2>
+					</div>
+					<div class="mdl-card__supporting-text">
+						<p>
+							<i>2018</i>
+						</p>
+						<p>
+							<b>NEU</b>! Neuer Hintergrund (u.a. verbesserter Bildausschnitt).
+							<br><b>NEU</b>! Variable Zuggeschwindigkeit.
+							<br><b>NEU</b>! Richtungswechsel für alle Züge möglich.
+							<br><b>NEU</b>! Kurzzeitig eingeblendete Benachrichtigungen informieren über Events.
+							<br><b>NEU</b>! Basiseinstellungen.
+							<br><b>NEU</b>! Neuer Vorspann.
+							<br><b>NEU</b>! Animation des brennenden Finanzamtes.
+							<br>Optimierte Objekte (Züge, Autos, Trafo,...).
+							<br>Optimierte Objektpfade ("Zugstrecken", "Autostrecken").
+							<br>Optimierte Objektsteuerung (Züge und Autos).
+							<br>Optimierte User-Interface.
+							<br>Optimierte Hilfeseiten.
+							<br>Nativer HTML-, JavaScript- und CSS-Code (statt Flash-Action-Script).
+							<br>Offline-Support als Progressive-Web-App.
+							<br>Einbau diverser Open-Source-Komponenten.
+							<br>Neue Lizenzierung des eigenen Codes.
+						</p>
+					</div>
+				</div>
+				<!--div class="mdl-card mdl-shadow--2dp version">
+					<div class="mdl-card__title">
+						<h2 class="mdl-card__title-text">Neu in Version 5.1 (in Arbeit)</h2>
+					</div>
+					<div class="mdl-card__supporting-text">
+						<p>
+							<i>2018 (?)</i>
+						</p>
+						<p>
+							<br><b>NEU</b>! Einige Weichen können gestellt werden. (in Arbeit)
+						</p>
+					</div>
+				</div-->
+			</article>
+			
+			<button id="backOption" class="internal-link mdl-button mdl-js-button mdl-js-ripple-effect">ZUR&Uuml;CK</button>
+			
+		</main>
+
+		
+	</div>
+	
+	
+</body>
+</html>

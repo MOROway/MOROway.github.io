@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="theme-color" content="#000" />
+        <link rel="icon" type="image/png" sizes="32x32" href="../favicon.png" />
+        <link rel="stylesheet" href="../common.css" />
+        <title>10 Years MOROway App</title>
+        <style>
+            #timeline {
+                display: flex;
+                max-width: 100vw;
+                overflow-x: auto;
+            }
+            #timeline > div {
+                margin: 20px;
+                flex-grow: 1;
+            }
+            #timeline .version span {
+                content: " ";
+                width: 10px;
+                height: 10px;
+                display: inline-block;
+                margin: 2px;
+                border-radius: 50%;
+            }
+            #timeline .version span.minor {
+                width: 5px;
+                height: 5px;
+            }
+
+            #player {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+            #player ruffle-player,
+            #player iframe,
+            #player img {
+                width: 90%;
+                height: 500px;
+                max-height: 100vh;
+                overflow-y: auto;
+            }
+            #player iframe {
+                background: white;
+            }
+            #player img {
+                object-fit: cover;
+            }
+            #player-version {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            #player-version > * {
+                width: 90%;
+            }
+            #player-version-warnings,
+            #player-version-hints {
+                border-radius: 30px;
+                padding: 10px;
+                margin: 10px;
+                line-height: 1.5em;
+                flex-direction: column;
+                display: none;
+            }
+            #player-version-warnings {
+                background: lightpink;
+                color: darkred;
+                border: 3px solid darkred;
+            }
+            #player-version-hints {
+                background: lightyellow;
+                color: rgb(150, 50, 0);
+                border: 3px solid orange;
+            }
+            #player-version-warnings > div,
+            #player-version-hints > div {
+                display: flex;
+                align-content: center;
+            }
+            #player-version-warnings > div > *,
+            #player-version-hints > div > * {
+                height: 1.3em;
+                display: inline-block;
+                margin: 0.1em;
+            }
+            #player-nav {
+                padding: 15px;
+            }
+            #player-nav .version-swf,
+            #player-nav .version-iframe {
+                cursor: pointer;
+            }
+            body.wait #player-nav .version-swf {
+                cursor: wait;
+            }
+            #player-nav .section-inner {
+                display: flex;
+                overflow-x: auto;
+            }
+            #player-nav .section-inner > * {
+                margin: 5px;
+                border: 1px solid lightyellow;
+                border-radius: 30%;
+                padding: 20px;
+            }
+            #player-nav .version-missing {
+                opacity: 0.7;
+                border-color: lightgray;
+                text-decoration: line-through;
+            }
+            #version-current,
+            #home,
+            #credits {
+                margin: 10px;
+                padding: 10px;
+            }
+            #version-current a,
+            #home a,
+            #credits a {
+                color: inherit;
+            }
+            @media (orientation: portrait) and (max-height: 750px) {
+                #player ruffle-player,
+                #player iframe,
+                #player img {
+                    height: 250px;
+                }
+            }
+        </style>
+        <script src="../common.js"></script>
+        <script src="versionStrings.js"></script>
+    </head>
+    <body>
+        <img id="share" alt="share" src="../share.png" />
+        <div id="share-dialog">
+            <div id="share-dialog-url"></div>
+            <div id="share-dialog-close">X</div>
+        </div>
+        <div id="timeline"></div>
+        <div id="player"></div>
+        <div id="player-version">
+            <div id="player-version-title"></div>
+            <div id="player-version-warnings"></div>
+            <div id="player-version-hints"></div>
+            <div id="player-version-content"></div>
+        </div>
+        <nav id="player-nav">
+            <section>
+                <header><h3>2011</h3></header>
+                <div class="section-inner">
+                    <div class="version-swf">1.0</div>
+                    <div class="version-swf">2.0</div>
+                    <div class="version-swf">3.0</div>
+                    <div class="version-missing">3.1</div>
+                    <div class="version-missing">3.2</div>
+                </div>
+            </section>
+            <section>
+                <header><h3>2015</h3></header>
+                <div class="section-inner">
+                    <div class="version-swf">4.0</div>
+                </div>
+            </section>
+            <section>
+                <header><h3>2018</h3></header>
+                <div class="section-inner">
+                    <div class="version-iframe">5.0</div>
+                    <div class="version-iframe">5.1</div>
+                    <div class="version-iframe">5.2</div>
+                    <div class="version-iframe">5.3</div>
+                    <div class="version-iframe">5.4</div>
+                    <div class="version-iframe">5.5</div>
+                    <div class="version-iframe">5.6</div>
+                </div>
+            </section>
+            <section>
+                <header><h3>2019</h3></header>
+                <div class="section-inner">
+                    <div class="version-iframe">6.0</div>
+                </div>
+            </section>
+            <section>
+                <header><h3>2020</h3></header>
+                <div class="section-inner">
+                    <div class="version-iframe">6.1</div>
+                    <div class="version-iframe">6.2</div>
+                    <div class="version-iframe">6.3</div>
+                    <div class="version-iframe">6.4</div>
+                </div>
+            </section>
+            <section>
+                <header><h3>2021</h3></header>
+                <div class="section-inner">
+                    <div class="version-iframe">7.0</div>
+                    <div class="version-iframe">7.1</div>
+                    <div class="version-iframe">7.2</div>
+                    <div class="version-iframe">7.3</div>
+                </div>
+            </section>
+            <section>
+                <header><h3>2022</h3></header>
+                <div class="section-inner">
+                    <div class="version-iframe">7.4</div>
+                    <div class="version-iframe">7.5</div>
+                    <div class="version-iframe">8.0</div>
+                    <div class="version-iframe">8.1</div>
+                </div>
+            </section>
+            <section>
+                <header><h3>2023</h3></header>
+                <div class="section-inner">
+                    <div class="version-iframe">9.0</div>
+                </div>
+            </section>
+        </nav>
+        <div id="version-current"><a target="_blank" href="https://app.moroway.de/">Current version</a></div>
+        <div id="home"><a href="../">Home</a></div>
+        <div id="credits"><a href="../credits">Credits</a></div>
+        <script src="ruffle/ruffle.js"></script>
+        <script>
+            //FIX OLD IGEL100 LINK
+            openMe = window.open;
+            window.open = function (a, b, c) {
+                a = a.replace("igel100.net", "herrmann-engel.de/projekte/igel100/");
+                openMe(a, b, c);
+            };
+            function reset() {
+                container.innerHTML = "";
+                container.scrollIntoView();
+                let elems = document.querySelectorAll(".section-inner > *, #player-version > *");
+                for (let elem = 0; elem < elems.length; elem++) {
+                    elems[elem].style = "";
+                }
+                document.querySelector("#player-version-title").onclick = null;
+                document.querySelector("#player-version-title").style.cursor = "";
+            }
+            function setVString(version, missing) {
+                let vMaj = version.substr(0, 1);
+                let vMin = version.substr(2, 1);
+                let vstrs = JSON.parse(JSON.stringify(vStrings[lang]["whatsNewScreenByVersionMa" + vMaj + "Mi" + vMin]));
+                document.querySelector("#player-version-title").textContent = "v" + version + " (" + vstrs[0] + ")";
+                if (missing) {
+                    document.querySelector("#player-version-title").textContent += " [" + (lang == "de" ? "verschollen" : "missing") + "]";
+                }
+                vstrs.shift();
+                document.querySelector("#player-version-content").innerHTML = "<ul><li>" + vstrs.join("</li><li>").replace(/[{][{][0-9]+[}][}]/g, "") + "</li><ul>";
+                let vhstrs = vStrings[defLang]["whatsNewScreenByVersionMa" + vMaj + "Mi" + vMin + "Hints"];
+                let vhstrsLocal = vStrings[lang]["whatsNewScreenByVersionMa" + vMaj + "Mi" + vMin + "Hints"];
+                if (vhstrs !== undefined) {
+                    if (vhstrsLocal !== undefined) {
+                        vhstrs = vhstrsLocal;
+                    }
+                    document.querySelector("#player-version-hints").innerHTML = '<div><img src="hint.png" alt="hint">' + vhstrs.join('</div><div><img src="hint.png" alt="hint">') + "</div>";
+                    document.querySelector("#player-version-hints").style.display = "flex";
+                }
+                let vwstrs = vStrings[defLang]["whatsNewScreenByVersionMa" + vMaj + "Mi" + vMin + "Warnings"];
+                let vwstrsLocal = vStrings[lang]["whatsNewScreenByVersionMa" + vMaj + "Mi" + vMin + "Warnings"];
+                if (vwstrs !== undefined) {
+                    if (vwstrsLocal !== undefined) {
+                        vwstrs = vwstrsLocal;
+                    }
+                    document.querySelector("#player-version-warnings").innerHTML = '<div><img src="warning.png" alt="warning">' + vwstrs.join('</div><div><img src="warning.png" alt="warning">') + "</div>";
+                    document.querySelector("#player-version-warnings").style.display = "flex";
+                }
+            }
+            function styleElem(elem, missing) {
+                reset();
+                elem.style.borderColor = "lightCoral";
+                elem.style.borderWidth = "3px";
+                window.location.hash = "#" + elem.textContent;
+                setVString(elem.textContent, missing);
+            }
+            function styleElemIFrame(elem) {
+                styleElem(elem, false);
+                document.querySelector("#player-version-title").style.cursor = "pointer";
+                document.querySelector("#player-version-title").onclick = function () {
+                    window.open(elem.textContent);
+                };
+                iframe.src = elem.textContent + "/index.html";
+                container.appendChild(iframe);
+            }
+            function styleElemMissing(elem) {
+                styleElem(elem, true);
+                container.appendChild(img);
+            }
+            function styleElemSWF(elem) {
+                if (ruffleReady) {
+                    ruffleReady = false;
+                    document.body.classList.add("wait");
+                    styleElem(elem, false);
+                    container.appendChild(player);
+                    player.load("./swf/" + elem.textContent + ".swf");
+                }
+            }
+            function findLoadElem(loadElem) {
+                let elems = document.querySelectorAll(".section-inner > *");
+                for (let elem = 0; elem < elems.length; elem++) {
+                    if (elems[elem].textContent == loadElem) {
+                        return loadElem;
+                    }
+                }
+                return elems[0].textContent;
+            }
+            function setTimeline(elem, color) {
+                try {
+                    var vMin = elem.textContent.substr(2, 1);
+                    var year = elem.parentNode.parentNode.querySelector("h3").textContent;
+                    var yearElem = document.createElement("span");
+                    yearElem.style.backgroundColor = color;
+                    if (vMin != 0) {
+                        yearElem.className = "minor";
+                    }
+                    document.querySelector("#timeline-versions-" + year).appendChild(yearElem);
+                } catch (e) {
+                    console.error(e);
+                }
+            }
+            //I18N
+            const strings = {
+                de: {
+                    title: "10 Jahre MOROway App",
+                    vCa: "Aktuelle Version"
+                }
+            };
+            const defLang = "en";
+            const lang = strings.hasOwnProperty(window.navigator.language.substr(0, 2)) ? window.navigator.language.substr(0, 2) : defLang;
+            if (lang != defLang) {
+                if (strings[lang].hasOwnProperty("vCa")) {
+                    document.querySelector("#version-current a").textContent = strings[lang].vCa;
+                }
+                if (strings[lang].hasOwnProperty("title")) {
+                    document.title = strings[lang].title;
+                }
+            }
+            const container = document.getElementById("player");
+            const loadElem = findLoadElem(window.location.hash.replace("#", ""));
+            //Timeline
+            var yearStart = 2011;
+            var yearEnd = new Date().getFullYear();
+            for (let year = yearStart; year <= yearEnd; year++) {
+                var yearElem = document.createElement("div");
+                var yearElemTitle = document.createElement("div");
+                yearElemTitle.textContent = year;
+                yearElemVersions = document.createElement("div");
+                yearElemVersions.id = "timeline-versions-" + year;
+                yearElemVersions.className = "version";
+                yearElem.appendChild(yearElemTitle);
+                yearElem.appendChild(yearElemVersions);
+                document.querySelector("#timeline").appendChild(yearElem);
+            }
+            //SWF
+            var ruffleReady = true;
+            window.RufflePlayer = window.RufflePlayer || {};
+            window.RufflePlayer.config = {contextMenu: "off", menu: false};
+            const ruffle = window.RufflePlayer.newest();
+            const player = ruffle.createPlayer();
+            player.addEventListener("loadeddata", function () {
+                ruffleReady = true;
+                document.body.classList.remove("wait");
+            });
+            const elemsSWF = document.querySelectorAll("#player-nav .version-swf");
+            for (let elem = 0; elem < elemsSWF.length; elem++) {
+                setTimeline(elemsSWF[elem], "#fff566");
+                if (elemsSWF[elem].textContent == loadElem) {
+                    styleElemSWF(elemsSWF[elem]);
+                }
+                elemsSWF[elem].addEventListener("click", function () {
+                    styleElemSWF(elemsSWF[elem]);
+                });
+            }
+            //Missing
+            const img = document.createElement("img");
+            img.src = "missing.png";
+            const elemsMissing = document.querySelectorAll("#player-nav .version-missing");
+            for (let elem = 0; elem < elemsMissing.length; elem++) {
+                setTimeline(elemsMissing[elem], "#ff4554");
+                if (elemsMissing[elem].textContent == loadElem) {
+                    styleElemMissing(elemsMissing[elem]);
+                }
+                elemsMissing[elem].addEventListener("click", function () {
+                    styleElemMissing(elemsMissing[elem]);
+                });
+            }
+            //HTML
+            const iframe = document.createElement("iframe");
+            const elemsIFrame = document.querySelectorAll("#player-nav .version-iframe");
+            for (let elem = 0; elem < elemsIFrame.length; elem++) {
+                setTimeline(elemsIFrame[elem], "#66ff44");
+                if (elemsIFrame[elem].textContent == loadElem) {
+                    styleElemIFrame(elemsIFrame[elem]);
+                }
+                elemsIFrame[elem].addEventListener("click", function () {
+                    styleElemIFrame(elemsIFrame[elem]);
+                });
+            }
+        </script>
+    </body>
+</html>

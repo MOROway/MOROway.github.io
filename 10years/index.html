@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="theme-color" content="#000" />
+        <link rel="icon" type="image/png" sizes="32x32" href="./favicon.png" />
+        <link rel="stylesheet" href="./common.css" />
+        <title>10 Years MOROway App</title>
+        <style>
+            .red {
+                color: red;
+            }
+            .orange {
+                color: orange;
+            }
+            .yellow {
+                color: yellow;
+            }
+            .green {
+                color: green;
+            }
+            .turquoise {
+                color: turquoise;
+            }
+            .blue {
+                color: blue;
+            }
+            .violet {
+                color: violet;
+            }
+            #down {
+                position: absolute;
+                z-index: -1;
+                right: 15px;
+                top: calc(100% - 45px);
+                width: 30px;
+                height: 30px;
+            }
+            #intro {
+                height: 100vh;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                font-size: 5em;
+                background-image: url(logo.png);
+                background-repeat: no-repeat;
+                background-position: center;
+                cursor: pointer;
+                user-select: none;
+            }
+            #intro #welcome-banner {
+                position: absolute;
+                font-size: 0.4em;
+                transform: rotate(-4deg);
+                right: 10vw;
+                top: 55vh;
+            }
+            #main {
+                padding: 20px;
+                text-align: center;
+                min-height: 100vh;
+            }
+            #main section {
+                padding-bottom: 10px;
+                margin-bottom: 10px;
+                border-bottom: 1px solid aqua;
+                font-size: 120%;
+            }
+            #main section:target {
+                transform: rotate(-0.2deg);
+                font-size: 140%;
+            }
+            #main section h3 {
+                color: bisque;
+            }
+            #main section:target h3 {
+                transform: rotate(0.2deg);
+            }
+            #main section .section-link {
+                padding: 10px;
+            }
+            #main section .section-link a {
+                color: cornflowerblue;
+                text-transform: uppercase;
+                text-decoration: none;
+            }
+            #main section picture,
+            #main section img {
+                max-width: 100%;
+                width: 100%;
+            }
+            @media (orientation: portrait) {
+                #down {
+                    left: 15px;
+                    right: unset;
+                }
+            }
+            @media (min-width: 750px) {
+                #intro #welcome-banner {
+                    left: 55vw;
+                    right: unset;
+                }
+            }
+            @media (min-width: 750px) {
+                #main section picture,
+                #main section img {
+                    width: 50%;
+                }
+            }
+        </style>
+        <script src="./common.js"></script>
+    </head>
+    <body>
+        <img id="down" alt="down" src="./down.png" />
+        <img id="share" alt="share" src="./share.png" />
+        <div id="share-dialog">
+            <div id="share-dialog-url"></div>
+            <div id="share-dialog-close">X</div>
+        </div>
+        <div id="intro">
+            <div id="welcome">
+                <div id="welcome-text">10 YEARS</div>
+                <div id="welcome-banner">MOROway App</div>
+            </div>
+        </div>
+        <div id="main">
+            <section id="birthday">
+                <header><h3>Birthday</h3></header>
+                <div class="section-inner">On February 7th, 2021 MOROway App celebrated its 10th birthday.</div>
+                <div class="section-link">
+                    <a href="https://app.moroway.de/">MOROway App</a>
+                </div>
+            </section>
+            <section id="history">
+                <header><h3>History</h3></header>
+                <div class="section-inner">
+                    MOROway App started as a small Adobe Flash animation project 2011 under the name "MOROway Animation" (Versions 1.0-3.2). Four years later the next and last update for the Flash version was created featuring e.g. a third train (Version 4.0). Since 2018 MOROway App is a modern HTML5/JavaScript web app (Version 5.0). In the period after this major update several new features like switches for the trains and an automatic mode for the cars were added. Since 2019 a multiplayer mode is available (Version 6.0). The following releases improved usability and performance.<br />
+                    Since 2014 MOROway App is also available in Google's Play Store. Microsoft Store, F-Droid and Ubuntu's Snap Store followed.<br />
+                    MOROway App is an open source project and you may find the source code on Github (starting from April 2018). From 2022 on translations are handled using Weblate.
+                </div>
+                <div class="section-link">
+                    <a target="_blank" href="https://play.google.com/store/apps/details?id=appinventor.ai_Jonathan_Herrmann_Engel.MOROway">Play Store</a> / <a target="_blank" href="https://f-droid.org/packages/de.moroway.oc/">F-Droid</a> / <a target="_blank" href="https://apps.microsoft.com/detail/MOROway%20App/9NB7T5B9RD91?launch=true&mode=full">Microsoft Store</a> / <a target="_blank" href="https://snapcraft.io/moroway-app">Snap Store</a> / <a target="_blank" href="https://moroway.github.io/moroway-app-dev/">Github</a> /
+                    <a target="_blank" href="https://hosted.weblate.org/engage/moroway-app/">Weblate</a>
+                </div>
+            </section>
+            <section id="now">
+                <header><h3>Celebration Update</h3></header>
+                <div class="section-inner">The birthday celebration version 7.0 offers three new trains and an option to save the game's state.</div>
+                <br />
+                <picture>
+                    <source media="(min-width:1750px)" srcset="birthday-update-big.gif" />
+                    <img src="birthday-update.gif" alt="changes" />
+                </picture>
+            </section>
+            <section id="archive">
+                <header><h3>Archive</h3></header>
+                <div class="section-inner">
+                    As part of the celebration there is also an archive available where you may find the previous releases in chronological order.<br />
+                    This release history page is of huge size. Therefore only use with unlimited data volume.
+                </div>
+                <div class="section-link">
+                    <a href="archive">Archive</a>
+                </div>
+            </section>
+        </div>
+        <script>
+            function toRainbow(elem) {
+                let rainbowHTML = document.createElement("div");
+                let m = 0;
+                for (let i = 0; i < elem.textContent.length; i++) {
+                    let span = document.createElement("span");
+                    if (elem.textContent[i].search(/\s/) === -1) {
+                        switch (m % 7) {
+                            case 0:
+                                span.className = "rainbow red";
+                                break;
+                            case 1:
+                                span.className = "rainbow orange";
+                                break;
+                            case 2:
+                                span.className = "rainbow yellow";
+                                break;
+                            case 3:
+                                span.className = "rainbow green";
+                                break;
+                            case 4:
+                                span.className = "rainbow turquoise";
+                                break;
+                            case 5:
+                                span.className = "rainbow blue";
+                                break;
+                            case 6:
+                                span.className = "rainbow violet";
+                                break;
+                        }
+                        m++;
+                    }
+                    span.textContent = elem.textContent[i];
+                    rainbowHTML.appendChild(span);
+                }
+                elem.innerHTML = rainbowHTML.innerHTML;
+            }
+            //I18N
+            const vStrings = {
+                de: {
+                    title: "10 Jahre MOROway App",
+                    welcome: "10 JAHRE",
+                    birthday: "Geburtstag",
+                    birthdayInner: ["Am 7. Februar 2021 feierte die MOROway App ihren 10. Geburtstag."],
+                    history: "Geschichte",
+                    historyInner: ['Die MOROway App startete als kleines Adobe Flash Animationsprojekt im Jahre 2011 unter dem Namen "MOROway Animation" (Versionen 1.0-3.2). Vier Jahre später gab es das nächste und letzte Update für die Flash-Version unter anderem mit einem dritten Zug (Version 4.0). Seit 2018 ist die MOROway App eine moderne HTML5/JavaScript Webapp (Version 5.0). In der Zeit nach diesem großen Update folgten neue Funktionen wie Weichen für die Züge und eine automatische Steuerung für die Autos. Seit 2019 ist ein Multiplayermodus vorhanden (Version 6.0). Hiernach wurden die Bedienung und die Performance verbessert.', "Seit 2014 ist die MOROway App in Google's Play Store zu finden. Der Microsoft Store, F-Droid und der Ubuntu Snap Store folgten.", "Die MOROway App ist ein Open Source Projekt; der Source Code findet sich auf Github (seit April 2018). Von 2022 an wird für die Übersetzungen Weblate genutzt."],
+                    now: "Geburtstagsfeier-Update",
+                    nowInner: ["Seit der Geburtstagsfeier-Version 7.0 lassen sich drei weitere Züge steuern. Zudem kann der Spielstand gespeichert werden."],
+                    archive: "Archiv",
+                    archiveInner: ["Auch als Teil der Geburtstagsfeier finden Sie im Archiv die bisherigen Veröffentlichungen in chronologischer Reihenfolge.", "Da die Veröffentlichungen in der Summe sehr groß sind, verwenden Sie das Archiv bitte nur mit unbegrenztem Datenvolumen."],
+                    archiveLink: "Archiv"
+                }
+            };
+            const defLang = "en";
+            const lang = vStrings.hasOwnProperty(window.navigator.language.substr(0, 2)) ? window.navigator.language.substr(0, 2) : defLang;
+            if (lang != defLang) {
+                if (vStrings[lang].rtl) {
+                    document.body.style.direction = "rtl";
+                }
+                if (vStrings[lang].hasOwnProperty("title")) {
+                    document.title = vStrings[lang].title;
+                }
+                if (vStrings[lang].hasOwnProperty("welcome")) {
+                    document.querySelector("#welcome #welcome-text").textContent = vStrings[lang].welcome;
+                }
+                if (vStrings[lang].hasOwnProperty("birthday")) {
+                    document.querySelector("#birthday h3").textContent = vStrings[lang].birthday;
+                }
+                if (vStrings[lang].hasOwnProperty("birthdayInner")) {
+                    document.querySelector("#birthday .section-inner").innerHTML = vStrings[lang].birthdayInner.join("<br>");
+                }
+                if (vStrings[lang].hasOwnProperty("history")) {
+                    document.querySelector("#history h3").textContent = vStrings[lang].history;
+                }
+                if (vStrings[lang].hasOwnProperty("history")) {
+                    document.querySelector("#history .section-inner").innerHTML = vStrings[lang].historyInner.join("<br>");
+                }
+                if (vStrings[lang].hasOwnProperty("now")) {
+                    document.querySelector("#now h3").textContent = vStrings[lang].now;
+                }
+                if (vStrings[lang].hasOwnProperty("now")) {
+                    document.querySelector("#now .section-inner").innerHTML = vStrings[lang].nowInner.join("<br>");
+                }
+                if (vStrings[lang].hasOwnProperty("archive")) {
+                    document.querySelector("#archive h3").textContent = vStrings[lang].archive;
+                }
+                if (vStrings[lang].hasOwnProperty("archive")) {
+                    document.querySelector("#archive .section-inner").innerHTML = vStrings[lang].archiveInner.join("<br>");
+                }
+                if (vStrings[lang].hasOwnProperty("archive")) {
+                    document.querySelector("#archive .section-link a").textContent = vStrings[lang].archiveLink;
+                }
+            }
+            let elems = document.querySelectorAll("#main section");
+            for (let elem = 0; elem < elems.length; elem++) {
+                elems[elem].querySelector("h3").addEventListener("click", function (ev) {
+                    window.location.hash = "#" + ev.target.parentNode.parentNode.id;
+                });
+            }
+            document.querySelector("#intro").addEventListener("click", function () {
+                document.querySelector("#main").scrollIntoView();
+            });
+            toRainbow(document.querySelector("#welcome-text"));
+        </script>
+    </body>
+</html>
