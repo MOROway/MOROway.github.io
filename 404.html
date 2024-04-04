@@ -1,43 +1,73 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<title>Sorry!</title>
-		<style>
-			body {
-				margin: 0;
-				padding: 0;
-				background: black;
-				color: white;
-				font-size: 3em;
-				text-align: center;
-				font-family: monospace;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				min-height: 100vh;
-				min-height: -webkit-fill-available;
-				min-height: stretch;
-			}
-			img {
-				max-width: 80%;
-				max-height: 10vh;
-				object-fit: contain;
-			}
-			div {
-				padding: 0.3em;
-			}
-			a {
-				color: floralwhite;
-				text-decoration: none;
-			}
-			
-		</style>
-	</head>
-	<body>
-		<div>Page not found.</div>
-		<div><img src="/404.png" alt="Error 404"></div>
-		<div><a href="/">Go to MOROway App Github Page</a></div>
-	</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <title>Sorry!</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                background: black;
+                color: white;
+                font-size: 3em;
+                text-align: center;
+                font-family: monospace;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                min-height: 100vh;
+                min-height: -webkit-fill-available;
+                min-height: stretch;
+            }
+            img {
+                max-width: 80%;
+                max-height: 10vh;
+                object-fit: contain;
+            }
+            div {
+                padding: 0.3em;
+            }
+            a {
+                color: floralwhite;
+                text-decoration: none;
+            }
+            #counter {
+                font-style: italic;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div>Page not found.</div>
+        <div><img src="/404.png" alt="Error 404" /></div>
+        <div><a href="/">Go to MOROway App Github Page</a> <span id="counter"></span></div>
+        <script>
+            const counterElem = document.querySelector("#counter");
+            if (counterElem) {
+                var timeout;
+                function setCounter(time) {
+                    if (typeof time == "number") {
+                        if (time > 0) {
+                            counterElem.textContent = "…" + time;
+                            time--;
+                            timeout = window.setTimeout(function () {
+                                setCounter(time);
+                            }, 1000);
+                        } else {
+                            counterElem.textContent = "";
+                            window.open("/", "_self");
+                        }
+                    }
+                }
+                counterElem.onclick = function () {
+                    if (timeout) {
+                        window.clearTimeout(timeout);
+                        counterElem.textContent = "";
+                    }
+                };
+                setCounter(5);
+            }
+        </script>
+    </body>
 </html>
