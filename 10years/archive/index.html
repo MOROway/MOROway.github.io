@@ -229,16 +229,6 @@
                 a = a.replace("igel100.net", "herrmann-engel.de/projekte/igel100/");
                 openMe(a, b, c);
             };
-            function reset() {
-                container.innerHTML = "";
-                container.scrollIntoView();
-                let elems = document.querySelectorAll(".section-inner > *, #player-version > *");
-                for (let elem = 0; elem < elems.length; elem++) {
-                    elems[elem].style = "";
-                }
-                document.querySelector("#player-version-title").onclick = null;
-                document.querySelector("#player-version-title").style.cursor = "";
-            }
             function setVString(version, missing) {
                 let vMaj = version.substr(0, 1);
                 let vMin = version.substr(2, 1);
@@ -269,7 +259,13 @@
                 }
             }
             function styleElem(elem, missing) {
-                reset();
+                container.innerHTML = "";
+                let elems = document.querySelectorAll(".section-inner > *, #player-version > *");
+                for (let elemNo = 0; elemNo < elems.length; elemNo++) {
+                    elems[elemNo].style = "";
+                }
+                document.querySelector("#player-version-title").onclick = null;
+                document.querySelector("#player-version-title").style.cursor = "";
                 elem.style.borderColor = "lightCoral";
                 elem.style.borderWidth = "3px";
                 window.location.hash = "#" + elem.textContent;
@@ -283,10 +279,12 @@
                 };
                 iframe.src = elem.textContent + "/index.html";
                 container.appendChild(iframe);
+                container.scrollIntoView();
             }
             function styleElemMissing(elem) {
                 styleElem(elem, true);
                 container.appendChild(img);
+                container.scrollIntoView();
             }
             function styleElemSWF(elem) {
                 if (ruffleReady) {
@@ -294,6 +292,7 @@
                     document.body.classList.add("wait");
                     styleElem(elem, false);
                     container.appendChild(player);
+                    container.scrollIntoView();
                     player.load("./swf/" + elem.textContent + ".swf");
                 }
             }
