@@ -237,8 +237,8 @@
                 openMe(a, b, c);
             };
             function setVString(version, missing) {
-                let vMaj = version.substr(0, 1);
-                let vMin = version.substr(2, 1);
+                let vMaj = version.split(".")[0];
+                let vMin = version.split(".")[1];
                 let vstrs = JSON.parse(JSON.stringify(vStrings[lang]["whatsNewScreenByVersionMa" + vMaj + "Mi" + vMin]));
                 document.querySelector("#player-version-title").textContent = "v" + version + " (" + vstrs[0] + ")";
                 if (missing) {
