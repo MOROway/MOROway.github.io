@@ -314,11 +314,11 @@
             }
             function setTimeline(elem, color) {
                 try {
-                    var vMin = elem.textContent.substr(2, 1);
+                    var vMin = elem.textContent.split(".")[1];
                     var year = elem.parentNode.parentNode.querySelector("h3").textContent;
                     var yearElem = document.createElement("span");
                     yearElem.style.backgroundColor = color;
-                    if (vMin != 0) {
+                    if (vMin !== "0") {
                         yearElem.className = "minor";
                     }
                     document.querySelector("#timeline-versions-" + year).appendChild(yearElem);
