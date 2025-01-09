@@ -300,7 +300,7 @@
                     styleElem(elem, false);
                     container.appendChild(player);
                     container.scrollIntoView();
-                    player.load("./swf/" + elem.textContent + ".swf");
+                    playerAPI.load("./swf/" + elem.textContent + ".swf");
                 }
             }
             function findLoadElem(loadElem) {
@@ -365,6 +365,7 @@
             window.RufflePlayer.config = {contextMenu: "off", menu: false};
             const ruffle = window.RufflePlayer.newest();
             const player = ruffle.createPlayer();
+            const playerAPI = player.ruffle();
             player.addEventListener("loadeddata", function () {
                 ruffleReady = true;
                 document.body.classList.remove("wait");
