@@ -239,15 +239,19 @@
             function setVString(version, missing) {
                 let vMaj = version.split(".")[0];
                 let vMin = version.split(".")[1];
-                let vstrs = JSON.parse(JSON.stringify(vStrings[lang]["whatsNewScreenByVersionMa" + vMaj + "Mi" + vMin]));
+                let vstrs = JSON.parse(JSON.stringify(vStrings[langVStrings]["whatsNewScreenByVersionMa" + vMaj + "Mi" + vMin]));
                 document.querySelector("#player-version-title").textContent = "v" + version + " (" + vstrs[0] + ")";
+                missingText = "missing";
+                if (langStrings != defLang && strings[langStrings].hasOwnProperty("missing")) {
+                    missingText = strings[langStrings].missing;
+                }
                 if (missing) {
-                    document.querySelector("#player-version-title").textContent += " [" + (lang == "de" ? "verschollen" : "missing") + "]";
+                    document.querySelector("#player-version-title").textContent += " [" + missingText + "]";
                 }
                 vstrs.shift();
                 document.querySelector("#player-version-content").innerHTML = "<ul><li>" + vstrs.join("</li><li>").replace(/[{][{][0-9]+[}][}]/g, "") + "</li><ul>";
                 let vhstrs = vStrings[defLang]["whatsNewScreenByVersionMa" + vMaj + "Mi" + vMin + "Hints"];
-                let vhstrsLocal = vStrings[lang]["whatsNewScreenByVersionMa" + vMaj + "Mi" + vMin + "Hints"];
+                let vhstrsLocal = vStrings[langVStrings]["whatsNewScreenByVersionMa" + vMaj + "Mi" + vMin + "Hints"];
                 if (vhstrs !== undefined) {
                     if (vhstrsLocal !== undefined) {
                         vhstrs = vhstrsLocal;
@@ -256,7 +260,7 @@
                     document.querySelector("#player-version-hints").style.display = "flex";
                 }
                 let vwstrs = vStrings[defLang]["whatsNewScreenByVersionMa" + vMaj + "Mi" + vMin + "Warnings"];
-                let vwstrsLocal = vStrings[lang]["whatsNewScreenByVersionMa" + vMaj + "Mi" + vMin + "Warnings"];
+                let vwstrsLocal = vStrings[langVStrings]["whatsNewScreenByVersionMa" + vMaj + "Mi" + vMin + "Warnings"];
                 if (vwstrs !== undefined) {
                     if (vwstrsLocal !== undefined) {
                         vwstrs = vwstrsLocal;
@@ -330,17 +334,21 @@
             const strings = {
                 de: {
                     title: "10 Jahre MOROway App",
-                    vCa: "Aktuelle Version"
+                    vCa: "Aktuelle Version",
+                    missing: "verschollen"
                 }
             };
             const defLang = "en";
-            const lang = strings.hasOwnProperty(window.navigator.language.substr(0, 2)) ? window.navigator.language.substr(0, 2) : defLang;
-            if (lang != defLang) {
-                if (strings[lang].hasOwnProperty("vCa")) {
-                    document.querySelector("#version-current a").textContent = strings[lang].vCa;
+            const userLangLong = window.navigator.language.replaceAll("-", "_");
+            const userLangShort = userLangLong.replace(/_.*$/, "");
+            const langStrings = strings.hasOwnProperty(userLangLong) ? userLangLong : strings.hasOwnProperty(userLangShort) ? userLangShort : defLang;
+            const langVStrings = vStrings.hasOwnProperty(userLangLong) ? userLangLong : vStrings.hasOwnProperty(userLangShort) ? userLangShort : defLang;
+            if (langStrings != defLang) {
+                if (strings[langStrings].hasOwnProperty("vCa")) {
+                    document.querySelector("#version-current a").textContent = strings[langStrings].vCa;
                 }
-                if (strings[lang].hasOwnProperty("title")) {
-                    document.title = strings[lang].title;
+                if (strings[langStrings].hasOwnProperty("title")) {
+                    document.title = strings[langStrings].title;
                 }
             }
             const container = document.getElementById("player");
